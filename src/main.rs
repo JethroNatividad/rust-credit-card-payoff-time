@@ -4,9 +4,9 @@
 // output: It will take you {} months to pay off this card
 
 fn calculate_credit_card_payoff_time(balance: f64, apbr: f64, monthly_payment: f64) -> f64 {
-    // if balance < 1.0 {
-    //     return 0.0;
-    // }
+    if balance < 1.0 {
+        return 0.0;
+    }
     // calculate monthly payment
     let daily_rate: f64 = (apbr / 100.0) / 365.0;
     // calculate formula
