@@ -13,7 +13,7 @@ fn calculate_credit_card_payoff_time(balance: f64, apbr: f64, monthly_payment: f
 
     // round up
     // return
-    res
+    res.ceil()
 }
 #[cfg(test)]
 mod tests {
