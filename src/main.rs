@@ -10,9 +10,7 @@ fn calculate_credit_card_payoff_time(balance: f64, apbr: f64, monthly_payment: f
     let res: f64 = (-1.0 / 30.0)
         * (1.0 + (balance / monthly_payment * (1.0 - (1.0 + daily_rate).powf(30.0)))).log10()
         / (1.0 + daily_rate).log10();
-
     // round up
-    // return
     res.ceil()
 }
 #[cfg(test)]
