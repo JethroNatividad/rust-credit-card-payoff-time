@@ -5,13 +5,19 @@
 
 fn calculate_credit_card_payoff_time(balance: f64, apbr: f64, monthly_payment: f64) -> f64 {
     // calculate monthly payment
+    let daily_rate: f64 = (apbr / 100.0) / 365.0;
     // calculate formula
-    // round
+    let res: f64 = (-1.0 / 30.0)
+        * (1.0 + (balance / monthly_payment * (1.0 - (1.0 + daily_rate).powf(30.0)))).log10()
+        / (1.0 + daily_rate).log10();
+
+    // round up
     // return
+    res
 }
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use super::calculate_credit_card_payoff_time;
 
     #[test]
     fn test_credit_card_payoff_time() {
