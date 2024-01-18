@@ -51,11 +51,17 @@ fn main() {
     // get input_balance, "What is your balance? "
     let input_balance: f64 = get_input("What is your balance? ");
     // get apbr, "What is the APR on the card (as a percent)? "
-    let apbr: f64 = get_input("What is the APR on the card (as a percent)? ");
+    let input_apbr: f64 = get_input("What is the APR on the card (as a percent)? ");
     // get monthly_payment, "What is the monthly payment you can make? "
-    let monthly_payment: f64 = get_input("What is the monthly payment you can make? ");
+    let input_monthly_payment: f64 = get_input("What is the monthly payment you can make? ");
     // calculate months
-    let months: i64
+    let months: i64 =
+        calculate_credit_card_payoff_time(input_balance, input_apbr, input_monthly_payment);
+    let plural_months: &str = if months > 1 { "months" } else { "month" };
 
     // print, "It will take you 70 month/s to pay off this card"
+    println!(
+        "It will take you {} {} to pay off this card.",
+        months, plural_months
+    );
 }
