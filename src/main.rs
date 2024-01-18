@@ -1,3 +1,5 @@
+use std::io;
+use std::io::Write;
 // A program that helps you determine how many months it will take to pay off credit card balance.
 // Inputs: balance, apbr, monthly_payment.
 // Process: (-1/30) * (log(1 + ((balance / monthly_payment)*(1 - pow(1 + (apbr / 365), 30))) ) / log(1 + (apbr / 365)))
@@ -27,6 +29,24 @@ mod tests {
         assert_eq!(calculate_credit_card_payoff_time(0.0, 15.0, 50.0), 0.0);
     }
 }
+
+fn get_input<T: std::str::FromStr>(prompt: &str) -> T {
+    loop {
+        print!("{}", prompt);
+        io::stdout().flush().unwrap();
+
+        let mut input = String::new();
+        io::stdin()
+            .read_line(&mut input)
+            .expect("Failed to read input");
+
+        match input.trim().parse() {
+            Ok(value) => break value,
+            Err(_) => println!("Invalid input. Please try again."),
+        }
+    }
+}
+
 fn main() {
     // get input_balance, "What is your balance? "
     // get apbr, "What is the APR on the card (as a percent)? "
