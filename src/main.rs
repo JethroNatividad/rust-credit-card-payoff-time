@@ -28,5 +28,10 @@ mod tests {
     }
 }
 fn main() {
-    println!("Hello, world!");
+    // get input_balance, "What is your balance? "
+    // get apbr, "What is the APR on the card (as a percent)? "
+    // get monthly_payment, "What is the monthly payment you can make? "
+    // calculate months
+
+    // print, "It will take you 70 month/s to pay off this card"
 }
